@@ -1,2 +1,7 @@
+# ignore VS files
+.vs
+out
+
+# ignore CLion files
 .idea
 cmake-build-debug
