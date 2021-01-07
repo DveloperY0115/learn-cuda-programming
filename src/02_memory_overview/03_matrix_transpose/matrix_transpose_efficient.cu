@@ -5,8 +5,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define N 2048
-#define BLOCK_SIZE 32
+#define N 4
+#define BLOCK_SIZE 2
 
 __global__ void matrix_transpose_naive(int *input, int *output) {
 
@@ -40,6 +40,7 @@ __global__ void matrix_transpose_shared(int *input, int *output) {
 
     int index = indexY * N + indexX;
     int transposedIndex = tindexY * N + tindexX;
+    // I think it's really bad name for variable. it's NOT an exact transposed position of (X, Y)
 
     // reading from global memory in coalesed manner and performing tanspose in shared memory
     sharedMemory[localIndexX][localIndexY] = input[index];
@@ -101,7 +102,7 @@ int main(void) {
 
     // Copy result back to host
     cudaMemcpy(b, d_b, size, cudaMemcpyDeviceToHost);
-    // print_output(a,b);
+    print_output(a,b);
 
     // terminate memories
     free(a);
