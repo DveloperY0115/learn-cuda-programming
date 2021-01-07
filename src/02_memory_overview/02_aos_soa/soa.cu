@@ -25,8 +25,7 @@ struct Coefficients_SOA {
 };
 
 
-__global__
-void complicatedCalculation(Coefficients_SOA  data)
+__global__ void complicatedCalculation(Coefficients_SOA  data)
 {
     int i = blockIdx.x*blockDim.x + threadIdx.x;
     int grayscale = (data.r[i] + data.g[i] + data.b[i])/data.maxVal[i];
