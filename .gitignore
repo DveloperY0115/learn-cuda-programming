@@ -5,3 +5,6 @@ out
 # ignore CLion files
 .idea
 cmake-build-debug
+
+# CUDA profile data
+profiles
